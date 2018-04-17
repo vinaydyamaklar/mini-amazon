@@ -101,7 +101,5 @@ ENV/
 .mypy_cache/
 
 #Data Base
-DB/
-
-#lICENSE
-LICENSE.txt
+mdb/
+__pycache__/
