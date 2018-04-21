@@ -6,7 +6,7 @@ import re
 class Product:
     def __init__(self):
         client = MongoClient('localhost', 27017)
-        self.db = client.tvb_amazon
+        self.db = client.tvbamazon
 
     def save(self, product):
         self.db.products.insert_one(product)

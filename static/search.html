@@ -6,19 +6,5 @@
         <input type="text" name="name" required><br>
         <input type="submit">
     </form>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-        </tr>
-        {% for p, value in result.iteritems() %}
-        <tr>
-            <th>p.name</th>
-            <th>p.price</th>
-            <th>p.description</th>
-        </tr>
-        {% endfor %}
-    </table>
     </body>
 </html>

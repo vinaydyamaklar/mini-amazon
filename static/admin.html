@@ -13,7 +13,7 @@
         <h4>Delete Product</h4><br>
         <form action="/api/products" method="post">
             <input type="text" name="op_type" value="Delete_One" hidden ><br>
-            Name:<br><input type="text" name="name" required><br>
+            Name:<br><input type="text" name="_id" required><br>
             <input type="submit">
         </form>
 
@@ -26,7 +26,7 @@
         <h4>Update Product</h4><br>
         <form action="/api/products" method="post">
             <input type="text" name="op_type" value="Update" hidden ><br>
-            Prd Name to be updated :<br><input type="text" name="nameCondition" required><br>
+            Prd Name to be updated :<br><input type="text" name="_id" required><br>
             New Name :<br><input type="text" name="name" required><br>
             New Description :<br><input type="text" name="desc" required><br>
             New Price :<br><input type="text" name="price" required><br>
