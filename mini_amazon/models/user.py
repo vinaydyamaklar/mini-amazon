@@ -19,3 +19,14 @@ class User:
         for user in result:
             matches.append(user)
         return matches
+
+    def authenticate_user(self, uname, password):
+        user = self.db.users.find({'user_name': uname})
+        if user.count() > 0:
+            for u in user:
+                if u['password'] == password:
+                    return user
+                else:
+                    return None
+        else:
+            return None
