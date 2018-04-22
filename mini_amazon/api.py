@@ -17,7 +17,7 @@ def load_product():
 
 @app.route("/mini-amazon/ulogin", methods=['GET', 'POST'])
 def load_login():
-    return send_from_directory("mini_amazon/static", "login.html")
+    return render_template("login.html")
 
 
 @app.route("/mini-amazon/authenticate-login", methods=['GET','POST'])
@@ -27,9 +27,8 @@ def login_authenticate():
     user = user_model.authenticate_user(uname, pwd)
 
     if user is None:
-        print("None")
-        return send_from_directory("mini_amazon/static", "login.html")
+        return render_template("login.html", login_msg="Invalid Username/Password")
     else:
         matches = product_model.get_all_products()
-        print(matches)
-        return render_template("index.html", results=matches, uname='vinay')
+        u = user_model.search_by_uname(uname)
+        return render_template("index.html", results=matches, uname=u['name'])

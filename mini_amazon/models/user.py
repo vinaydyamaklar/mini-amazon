@@ -18,10 +18,10 @@ class User:
         matches = []
         for user in result:
             matches.append(user)
-        return matches
+        return matches[0]
 
     def authenticate_user(self, uname, password):
-        user = self.db.users.find({'user_name': uname})
+        user = self.db.users.find({'user_name': uname, 'password': password})
         if user.count() > 0:
             for u in user:
                 if u['password'] == password:
