@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini amazon</title>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/application.js') }}" ></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles/application.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+
+<body style="height:100%;">
+<div class="div_header" id="hdr_div">
+        <table width="100%" >
+            <tr>
+                <td class="allign_left">
+                    <font class="font_header">Welcome to Mini amazon {% if user is defined %} {{ user.name }} {% endif %}</font>
+                    <input type="text" id="hdn_uname" hidden {% if user is defined %} value="{{ user.user_name }} " {% endif %}>
+                </td>
+                <td class="allign_right">
+                    <span>
+                        <form method="post">
+                            <input type="text" name="user_id_with_cart" id="user_id_with_cart" hidden {% if user is defined %} value="{{ user._id }}" {% endif %}/>
+                            <button type="submit" class="btn_cart" formaction="/miniamazon/cart">
+                                Cart <i class="fa fa-shopping-cart" style="font-size:24px;color:red"></i>{% if user is defined %} {{ user.cart | length }} {% endif %}
+                            </button>
+                        </form>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="allign_left">
+                    <form  action="/mini-amazon/search" method="post">
+                        <input type="text" name="product_name" placeholder="Search for product name here...">
+                        <button type="submit"><i class="fa fa-search">Search</i></button><br>
+                        <p class="error_msg"><b>{{ search_result }}</b></p>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="allign_right">
+                    <form method="post" >
+                        <span class="info_msg">{{ cart_msg }}</span>
+                        <div id="btn_login" class="visibility_hidden">
+                            <input class="btn_common btn_login " type="submit" formaction="/mini-amazon/ulogin" name="login" value="Login" />
+                        </div>
+                        <div  id="btn_logout" class="visibility_hidden">
+                            <input class="btn_common btn_login " type="submit" formaction="/mini-amazon" name="logout" value="Logout" />
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+</div>
+<hr>
+
+{% for res in results %}
+<div class="products_css">
+    <form method="post">
+        <h3>{{ res.name }}<br></h3>
+        Description : <b>{{ res.description }}</b><br>
+        Price : <i>{{ res.price }}</i><br><br>
+        <input type="text" name="hdn_prd_id" id="hdn_prd_name" hidden value="{{ res._id }}" />
+        <input type="text" name="hdn_user_id" id="hdn_user_id" hidden {% if user is defined %} value="{{ user._id }}" {% endif %}/>
+        <input type="text" name="hdn_user_name" id="hdn_user_name" hidden {% if user is defined %} value="{{ user.user_name }} " {% endif %}>
+        <button type="submit" formaction="/mini-amazon/add-to-cart" onclick="addProductToCart()" class="btn_add_cart" style="display:inline">
+           + <i class="fa fa-shopping-cart" style="font-size:24px;color:red;"></i>
+        </button>
+    </form>
+    <br>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:inline">
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business" value="logontovinay94@gmail.com">
+
+            <!-- Specify a Buy Now button. -->
+            <input type="hidden" name="cmd" value="_xclick">
+
+            <!-- Specify details about the item that buyers will purchase. -->
+            <input type="hidden" name="item_name" value="{{ res.name }}">
+            <input type="hidden" name="amount" value="{{ res.price }}">
+            <input type="hidden" name="currency_code" value="INR">
+
+            <!-- Display the payment button. -->
+            <input type="image" name="submit" border="0"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+            alt="Buy Now">
+            <img alt="" border="0" width="1" height="1"
+            src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+    </form>
+</div>
+<hr>
+{% endfor %}
+</body>
+</html>

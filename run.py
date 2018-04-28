@@ -1,4 +1,5 @@
-from tvb_amazon import app
+from mini_amazon import app
+
 
 
 if __name__ == '__main__':

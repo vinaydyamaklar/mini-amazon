@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles/application.css') }}">
+</head>
+<body>
+    {% block main %}
+    {% endblock %}
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/application.js') }}" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</body>
+</html>
