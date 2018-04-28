@@ -39,3 +39,14 @@ class Product:
         for product in result:
             matches.append(product)
         return matches
+
+    def search_by_id(self, _id):
+        query = {
+            '_id': ObjectId(_id)
+        }
+        result = self.db.products.find(query)
+        matches = []
+        for product in result:
+            matches.append(product)
+        return matches
+

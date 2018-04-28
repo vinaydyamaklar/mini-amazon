@@ -1,0 +1,140 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/*
+* Header Division
+*/
+.div_header {
+    height: 30%;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(252,187,51,1) 0%, rgba(253,29,47,1) 0%, rgba(217,182,13,1) 0%, rgba(241,82,11,1) 100%);
+}
+
+/*
+* Login button
+*/
+.btn_common {
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    padding: 8px 24px;
+}
+
+
+/*
+* Login button
+*/
+.btn_login {
+    background-color: #008CBA;
+    color: white;
+
+}
+
+.btn_login:hover {
+    background-color: white;
+    color: #008CBA;
+    border: 2px solid #008CBA;
+}
+
+/*
+* Allign center
+*/
+.allign_center {
+    text-align : center;
+}
+
+/*
+* Allign left
+*/
+.allign_left {
+    text-align : left;
+}
+
+/*
+* Allign right
+*/
+.allign_right {
+    text-align : right;
+}
+
+/*
+* Allign right
+*/
+.font_header{
+    font-size:35px;
+    color:white;
+    font-weight: bold;
+    text-shadow: 4px 2px black;
+}
+
+/*
+* Cart button
+*/
+.btn_cart {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.btn_cart:hover {
+    background-color: white;
+    color: #008CBA;
+    border: 2px solid #008CBA;
+}
+
+/*
+* Cart button
+*/
+.btn_add_cart {
+    background-color: white;
+    color:  #008CBA;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 4px 20px;
+    border-radius: 50%;
+    border: 2px solid #008CBA;
+    text-align: center;
+    display: inline;
+}
+
+.btn_add_cart:hover {
+    background-color: #008CBA;
+    color:white;
+    border: 2px solid white;
+}
+
+
+/*
+* Error message
+*/
+.error_msg {
+    font-size: 12px;
+    font-weight: bold;
+    color : RED;
+    display: inline;
+}
+
+/*
+* Error message
+*/
+.info_msg {
+    font-size: 12px;
+    font-weight: bold;
+    color : White;
+    display: inline;
+}
+
+
+.visibility_hidden{
+    visibility : hidden;
+}
+
+.products_css{
+    background :  -moz-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(241,231,103,0.26) 42%, rgba(241,231,103,0.26) 95%, rgba(254,182,69,0.26) 100%);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius : 5%;
+}
