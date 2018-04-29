@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from mini_amazon.models.product import Product
 import re
 
 
@@ -64,6 +63,20 @@ class User:
             return False
 
     def get_products_from_userid(self, user_id):
-        user = self.db.users.find({'_id': ObjectId(user_id)})
-        return user[0].get('cart') if user.count > 0 else None
+        condition = {'_id': ObjectId(user_id)}
+        user = self.db.users.find(condition)
+        return user[0].get('cart') if user.count() > 0 else None
+
+    def remove_product_from_cart(self, user_id, product_id):
+        cart = self.get_products_from_userid(user_id)
+        success = None
+        if len(cart) > 0:
+            cart.remove(ObjectId(product_id))
+            condition = {}
+            condition['_id'] = ObjectId(user_id)
+            self.db.users.update_one(condition, {"$set": {'cart': cart}})
+            success = True
+        else:
+            pass
+        return success
 

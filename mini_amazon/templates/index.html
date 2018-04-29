@@ -43,7 +43,7 @@
                     <form method="post" >
                         <span class="info_msg">{{ cart_msg }}</span>
                         <div id="btn_login" class="visibility_hidden">
-                            <input class="btn_common btn_login " type="submit" formaction="/mini-amazon/ulogin" name="login" value="Login" />
+                            <input class="btn_common btn_login" type="submit" formaction="/mini-amazon/ulogin" name="login" value="Login" />
                         </div>
                         <div  id="btn_logout" class="visibility_hidden">
                             <input class="btn_common btn_login " type="submit" formaction="/mini-amazon" name="logout" value="Logout" />
@@ -61,7 +61,7 @@
         <h3>{{ res.name }}<br></h3>
         Description : <b>{{ res.description }}</b><br>
         Price : <i>{{ res.price }}</i><br><br>
-        <input type="text" name="hdn_prd_id" id="hdn_prd_name" hidden value="{{ res._id }}" />
+        <input type="text" name="hdn_prd_id" id="hdn_prd_id" hidden value="{{ res._id }}" />
         <input type="text" name="hdn_user_id" id="hdn_user_id" hidden {% if user is defined %} value="{{ user._id }}" {% endif %}/>
         <input type="text" name="hdn_user_name" id="hdn_user_name" hidden {% if user is defined %} value="{{ user.user_name }} " {% endif %}>
         <button type="submit" formaction="/mini-amazon/add-to-cart" onclick="addProductToCart()" class="btn_add_cart" style="display:inline">
