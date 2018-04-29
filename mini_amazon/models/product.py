@@ -45,8 +45,5 @@ class Product:
             '_id': ObjectId(_id)
         }
         result = self.db.products.find(query)
-        matches = []
-        for product in result:
-            matches.append(product)
-        return matches
+        return result[0] if result.count() > 0 else None
 
