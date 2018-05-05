@@ -65,5 +65,5 @@ class User:
 
     def get_products_from_userid(self, user_id):
         user = self.db.users.find({'_id': ObjectId(user_id)})
-        return user[0].get('cart') if user.count > 0 else None
+        return user[0].get('cart') if user.count() > 0 else None
 

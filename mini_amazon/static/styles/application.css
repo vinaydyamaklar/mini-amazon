@@ -138,3 +138,21 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius : 5%;
 }
+
+.cart_products_css{
+    height:100px;
+    width:20%;
+    background :  -moz-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(241,231,103,0.26) 42%, rgba(241,231,103,0.26) 95%, rgba(254,182,69,0.26) 100%);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius : 10%;
+    margin-right: 30px;
+    text-align: justify;
+}
+
+.main_table_css{
+    width:100%;
+}
+
+.right_align_btn{
+    float:right;
+}

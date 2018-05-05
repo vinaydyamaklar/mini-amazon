@@ -8,13 +8,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <h1>{{ name }}'s shopping cart</h1>
+    <h1>{{ user.name }}'s shopping cart</h1>
 <h3>You have {{ products|length }} products in your cart</h3>
+
 <hr>
-    {% for product in products%}
-        <h3>{{ product.name }}</h3>
-        Price : <i>{{ product.price }}</i><br>
-        <hr>
+    <table align="center">
+    {% for product in products %}
+        <tr>
+            <td class="cart_products_css" >
+                <form>
+                    <div>
+                        <b>{{product.name}}</b><br>
+                        Price:<i>{{product.price}}</i>
+                        <input type="number" value="{{ product.price }}" hidden/>
+                        <input type="text"  name="product_id" value="{{ product._id }}" hidden/>
+                        <input type="button" class="right_align_btn" onclick="delete_product_from_cart()" />
+                    </div>
+                </form>
+            </td>
+        </tr>
     {% endfor %}
+    </table>
 </body>
 </html>

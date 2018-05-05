@@ -77,8 +77,8 @@ def show_cart():
     if user_id is None or user_id == '':
         return render_template("index.html", results=matches, user='', cart_msg='Please login then add it to  Cart')
     else:
-        u = user_model.search_by_id()
-        product_ids = user_model.get_products_from_userid(u._id)
+        u = user_model.search_by_id(user_id)
+        product_ids = user_model.get_products_from_userid(user_id)
         products_in_cart = [product_model.search_by_id(prod_id) for prod_id in product_ids]
-        return render_template('cart.html', products=products_in_cart)
+        return render_template('cart.html', products=products_in_cart,user=u)
 
