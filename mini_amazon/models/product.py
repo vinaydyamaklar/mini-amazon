@@ -1,12 +1,14 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import re
+import json
 
 
 class Product:
     def __init__(self):
-        client = MongoClient('localhost', 27017)
-        self.db = client.tvbamazon
+        config = json.load(open("./config.json","r"))
+        client = MongoClient(config['mongo_host'], config['mongo_port'])
+        self.db = client[config['mongo_dbname']]
 
     def save(self, product):
         self.db.products.insert_one(product)

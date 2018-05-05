@@ -1,13 +1,14 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-import re
+import re, json
 
 
 class User:
 
     def __init__(self):
-        client = MongoClient('localhost', 27017)
-        self.db = client.tvbamazon
+        config = json.load(open("./config.json", "r"))
+        client = MongoClient(config['mongo_host'], config['mongo_port'])
+        self.db = client[config['mongo_dbname']]
 
     def save_user(self, user):
         self.db.users.insert_one(user)
