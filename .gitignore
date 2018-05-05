@@ -101,5 +101,6 @@ ENV/
 .mypy_cache/
 
 #Data Base
+.idea
 mdb/
 __pycache__/
