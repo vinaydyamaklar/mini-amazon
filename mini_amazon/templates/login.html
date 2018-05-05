@@ -11,14 +11,15 @@
     <div class="login-page">
       <div class="form">
           <div id="signup_div" class="signup_div">
-               <form class="register-form">
-                   <input type="text" placeholder="name"/>
-                   <input type="password" placeholder="password"/>
-                   <input type="text" placeholder="email address"/>
+               <form method="post" class="register-form">
+                   <input name="name" type="text" placeholder="name"/>
+                   <input name="user_name" type="text" placeholder="email address" required/>
+                   <input name="password" type="password" placeholder="password" required/>
                    <input type="text" value="signup" name="op_type" hidden/>
-                   <button>create</button>
+                   <button formaction="/miniamazon/create-user">Sign UP</button>
                    <p class="message">Already registered? <a onclick="showLogin()" href="#">Sign In</a></p>
                    <p class="message"> <a onclick="showLogin()" href="#">Continue as Guest</a></p>
+
                 </form>
           </div>
           <div id="login_div">

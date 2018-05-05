@@ -21,7 +21,11 @@ class User:
         matches = []
         for user in result:
             matches.append(user)
-        return matches[0]
+        if len(matches) > 0:
+            return matches[0]
+        else:
+            return None
+
 
     def search_by_id(self, _id):
         query = {
@@ -81,3 +85,5 @@ class User:
             pass
         return success
 
+    def create_user(self, name, user_name, password):
+        self.db.users.insert_one({'name':name,'user_name':user_name,'password':password})

@@ -104,3 +104,21 @@ def remove_from_cart():
     for product in products_in_cart:
         total += product['price']
     return render_template('cart.html', products=products_in_cart, user=u, total=total)
+
+
+@app.route("/miniamazon/create-user", methods=['POST'])
+def create_user():
+    user_name = request.form.get('user_name', None)
+    password = request.form.get('password', None)
+    name = request.form.get('name', None)
+    if user_name is None or user_name == "" and password is None or password == "":
+        return render_template("login.html", login_msg="Username/Password required")
+    else:
+        u = user_model.search_by_uname(user_name)
+        if u is not None:
+            return render_template("login.html", login_msg="User Already Exist")
+        else:
+            user_model.create_user(name, user_name, password)
+            matches = product_model.get_all_products()
+            new_user = user_model.search_by_uname(user_name)
+            return render_template("index.html", results=matches, user=new_user)
